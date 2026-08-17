@@ -7,6 +7,8 @@
 \usepackage{matlab-prettifier}
 \usepackage{amsmath}
 
+
+
 % Set equation numbering to section and subsection
 %\renewcommand{\theequation}{\thesubsection.\arabic{equation}}
 \makeatletter
@@ -64,5 +66,157 @@
  \maketitle
  \thispagestyle{empty}
 \end{titlepage}
+
+\section*{Introduktion}
+Hej allesammen og velkommen til Calculus. I denne uge vil jeg beskrive hvad mine forventninger er til jer og hvad i kan forvente af mig.\vspace{1em}
+
+
+Der vil ydermere fremgå et eksempel på hvordan jeg vil løse en afleveringsopgave. \vspace{1em}
+
+\textbf{Lokale: TBD}
+
+\textbf{Tidspunkt: TBD}
+
+\section*{Hvad i kan forvente af mig}
+Jeg vil i bred udstrækning være behjælplig med at løse jeres opgave og så vidt muligt kunne besvare jeres spørgsmål. Dette indbærer dog ikke at jeg kommer med et "facit" til jeres opgaver / afleveringer, men at jeg gerne bistår jer i en selvstændig løsning / tankegang. \vspace{0em}
+Hvis i vil have kontakt til mig udenfor undervisningstimerne bedes i skrive til \textbf{\emph{202108521@post.au.dk}}, hver gerne meget tydlig i hvad du efterspørger og skriv det gerne i punktform.\vspace{1em}
+
+Til vores holdtimer vil strukturen nogenlunde komme til at se således ud:
+\begin{itemize}
+    \item En opsummering af sidste uges arbejde og afleveringsopgave.
+    \item Gennemgang af en af opgaverne fra denne uges ugeseddel.
+    \item Opgaveregning i grupper, hvor i kan spørge om hjælp.
+\end{itemize}
+
+\section*{Mine forventninger til jer}
+At denne undervisning forløber optimalt of bliver interessant er i høj grad op til jer. Der vil tages udgangspunkt i at mødes velforberedte op til undervisningen. Dette betyder ikke at i skal have en udførlig løsning af alle opgaver parat, men at i har kigget på ugens opgaver og løst nogle af dem. Hvis i støder ind i en opgave i ikke kan knække, så brug ikke timevis på denne - vent blot til holdtimen. \vspace{1em}
+\subsection*{Afleveringer}
+I vil i løbet af semesteret skulle have godkendt. Fra velkomst dokumentet: \vspace{1em}
+
+Det obligatoriske program: For at blive indstillet til eksamen i Calculus Tau, er det en forudsætning, at det ugentlige obligatoriske program bliver afleveret og godkendt i mindst 5 af ugerne 1-7 og i mindst 5 af ugerne 8–13. \vspace{1em}
+
+Der er intet obligatorisk program i Uge 14, da afleveringsdatoen ville falde uden for semesteret.\vspace{1em}
+
+Ugentligt obligatorisk program: Hver uge skal du normalt aflevere både en skriftlig opgave og en opgave i MyLab Math. Begge afleveringer skal godkendes for at opfylde kravene for denpågældende uge.
+Problemer med det obligatoriske program: Hvis du af en eller anden grund kommer bagud med det obligatoriske program, er det vigtigt at kontakte din instruktor hurtigst muligt og forklare situationen. I fællesskab vil I lave en aftale om, hvornår de manglende afleveringer skal indsendes. \vspace{1em}
+
+Til dette vil jeg tilføje at koordinere og orientere om eventuelle problemer ligger ved jer. Hvis jeg ikke høre noget fra jer og ikke modtager en aflevering, vil jeg blot markere den som ej godkendt. \vspace{1em}
+
+Jeres afleveringer regnes for at være selvstændigt arbejde. Det er et krav for at blive indstillet til eksamen. Derfor vil det ikke være muligt at aflevere som gruppe. Ydermere vil jeg have meget lav tolerens for brug af AI til at løse opgaverne. I skal kunne stå til regnskab for det i laver og jeg vil minde om at det anses for plagiat, og derfor eksamenssnyd, at bruge AI. I må meget gerne bruge AI til at hjælpe jer med at forstå opgaverne, men ikke til at løse dem direkte.
+
+\section*{Eksempel på aflevering}
+\LARGE{Navn: Anders Andersen}
+\vspace{2em}
+
+\LARGE{Studienummer: 12345678}
+\vspace{2em}
+
+\section*{Preface (Angiv antagelser)}
+
+
+
+Let \( X_1, X_2, X_3 \) be independent normally distributed random variables, such that
+
+\[
+X_1 \sim N(\mu, \sigma_0^2), \quad X_2 \sim N(\mu, \sigma_0^2), \quad X_3 \sim N(2\mu, \sigma_0^2),
+\]
+
+where \( \mu \in \mathbb{R} \) is unknown, while the variance \( \sigma_0^2 > 0 \) is known.
+
+
+\section*{Opgave a)}
+We wish to show that the maximum likelihood fucntion for the parameter \( \mu \) is given by
+\begin{equation}
+    L(\mu) = \left(\frac{1}{2\pi \sigma_0^2}\right)^\frac{3}{2} e^{\left( -\frac{1}{2\sigma_0^2} \left( (x_1 - \mu)^2 + (x_2 - \mu)^2 + (x_3 - 2\mu)^2 \right) \right)}.
+\end{equation}
+The densities of the random variables are given by
+\begin{equation}
+    \begin{gathered}
+        f_{X_1}(x_1) = \frac{1}{\sqrt{2\pi \sigma_0^2}} e^{-\frac{1}{2\sigma_0^2}(x_1 - \mu)^2}, \\
+        f_{X_2}(x_2) = \frac{1}{\sqrt{2\pi \sigma_0^2}} e^{-\frac{1}{2\sigma_0^2}(x_2 - \mu)^2}, \\
+        f_{X_3}(x_3) = \frac{1}{\sqrt{2\pi \sigma_0^2}} e^{-\frac{1}{2\sigma_0^2}(x_3 - 2\mu)^2}.
+    \end{gathered}
+    \label{eq:den}
+\end{equation}
+Since the random variables are independent, we know from theorem 1, slides uge 1 that the joint denisty is given by the product of the marginal densities, we have
+\begin{equation}
+    f_{X_1X_2X_3}(x_1, x_2, x_3) = f_{X_1}(x_1) f_{X_2}(x_2) f_{X_3}(x_3).
+\end{equation}
+Then the likelihood function is found by assuming that the density of oberserved sample values is a function of the parameter \( \mu \), such that
+\begin{equation}
+    L(\mu) =f_{X_1}(x_1;\, \mu) f_{X_2}(x_2;\, \mu) f_{X_3}(x_3;\, \mu).
+    \label{eq:L}
+\end{equation}
+Using the densities in equation \eqref{eq:den} in equation \eqref{eq:L} and the exponential rule \( e^{a + b} = e^a e^b \), we find
+\begin{equation}
+    \begin{aligned}
+        L(\mu) &= \left( \dfrac{1}{\sqrt{2\pi \sigma_0^2}} \right)^3 e^{-\frac{1}{2\sigma_0^2}(x_1 - \mu)^2} e^{-\frac{1}{2\sigma_0^2}(x_2 - \mu)^2} e^{-\frac{1}{2\sigma_0^2}(x_3 - 2\mu)^2} \\
+        &= \left( \frac{1}{\sqrt{2\pi \sigma_0^2}} \right)^3 e^{-\frac{1}{2\sigma_0^2} \left( (x_1 - \mu)^2 + (x_2 - \mu)^2 + (x_3 - 2\mu)^2 \right)}\\
+        &= \left( \frac{1}{2\pi \sigma_0^2} \right)^\frac{3}{2} e^{-\frac{1}{2\sigma_0^2} \left( (x_1 - \mu)^2 + (x_2 - \mu)^2 + (x_3 - 2\mu)^2 \right)}
+    \end{aligned}
+\end{equation}
+
+\section*{Opgave b)}
+We now wish to show that the maximum likelihood estimator for the parameter \( \mu \) is given by
+\begin{equation}
+    \hat{\mu} = \frac{x_1 + x_2 + 2x_3}{6}.
+\end{equation}
+The log-likelihood function is given by
+\begin{equation}
+    \begin{aligned}
+        l(\mu) &= \log L(\mu) \\
+        &= \log \left( \frac{1}{2\pi \sigma_0^2} \right)^\frac{3}{2} -\frac{1}{2\sigma_0^2} \left( (x_1 - \mu)^2 + (x_2 - \mu)^2 + (x_3 - 2\mu)^2 \right) \\
+        &= -\frac{3}{2} \log(2\pi \sigma_0^2) - \frac{1}{2\sigma_0^2} \left( (x_1 - \mu)^2 + (x_2 - \mu)^2 + (x_3 - 2\mu)^2 \right).
+    \end{aligned}
+\end{equation}
+To find the maximum likelihood estimator, we differentiate the log-likelihood function with respect to \( \mu \) and set it equal to zero. The of the this equation is the maximum likelihood estimator $\hat{mu}$. We have
+
+\begin{equation}
+    \begin{aligned}
+         l'(\mu) = \frac{-1}{2\sigma_0^2} \left( -2(x_1 - \mu) - 2(x_2 - \mu) - 4(x_3 - 2\mu) \right) = 0 \iff \\
+        &  -2x_1 + 2\mu - 2x_2 + 2\mu - 4x_3 + 8\mu = 0 \iff \dfrac{2x_1 + 2x_2 + 4x_3}{12} = \dfrac{x_1 + x_2 + 2x_3}{6} = \mu . \\
+        \end{aligned}
+\end{equation}
+Note that since $l''(\mu) = \dfrac{-6}{\sigma_0^2} < 0 \; \text{for all }\; \mu $, the maximum likelihood estimator is indeed a maximum for both $l(\mu)$ and $L(\mu)$ since according to theorem 2, slides uge 1, the log-transformation is a strictly increasing transformation .
+
+\section*{Opgave c)}
+
+We wish to show that
+\begin{equation}
+    \dfrac{X_1 + X_2 + 2X_3}{6} \sim N(\mu, \dfrac{\sigma_0^2}{6}).
+    \label{eq:31}
+\end{equation}
+
+By the distribution properties of independent normally distributed random variables, theorem 3, the book, page xxx, we have
+
+\begin{equation}
+    \dfrac{X_1 + X_2 + 2X_3}{6} \sim N(\frac{\mu}{6} + \frac{\mu}{6} + \frac{4\mu}{6} , \dfrac{\sigma_0^2}{6^2} + \dfrac{\sigma_0^2}{6^2} + \dfrac{4\sigma_0^2}{6^2} ) \sim N(\mu, \dfrac{\sigma_0^2}{6}).
+\end{equation}
+as we wanted to show.\\
+
+We now wish to find the confidence interval for the parameter \( \mu \). Let
+\begin{equation}
+    Y \sim \dfrac{X_1 + X_2 + 2X_3}{6} \sim N(\mu, \dfrac{\sigma_0^2}{6}),
+\end{equation}
+then the sample mean, which is our estimator for the parameter \( \mu \), is given by
+\begin{equation}
+    \Bar{Y}. = \dfrac{1}{n} \sum_{i=1}^{n} Y_i \sim  N(\mu, \dfrac{\sigma_0^2}{6n}).
+\end{equation}
+Normalizing the sample mean, we get that
+\begin{equation}
+    \dfrac{\Bar{Y} - \mu}{\sqrt{\dfrac{\sigma_0^2}{6n}}} \sim N(0, 1).
+\end{equation}
+If we let $Z \sim N(0,1)$ then the propability that $Z$ is in the interval $[-z_{\alpha/2}, z_{\alpha/2}]$ is $1-\alpha$. Then we must have that
+\begin{equation}
+    P(-z_{\alpha/2} \leq \dfrac{\Bar{Y}. - \mu}{\sqrt{\dfrac{\sigma_0^2}{n6}}} \leq z_{\alpha/2}) = 1 - \alpha,
+\end{equation}
+which yields
+\begin{equation}
+    P(\Bar{Y}. - z_{\alpha/2} \sqrt{\dfrac{\sigma_0^2}{6n}} \leq \mu \leq \Bar{Y}. + z_{\alpha/2} \sqrt{\dfrac{\sigma_0^2}{6n}}) = 1 - \alpha.
+\end{equation}
+and we find that the $1-\alpha$ confidence interval for the parameter \( \mu \) is given by
+\begin{equation}
+    \left[ \Bar{Y}. - z_{\alpha/2} \sqrt{\dfrac{\sigma_0^2}{6n}}, \Bar{Y}. + z_{\alpha/2} \sqrt{\dfrac{\sigma_0^2}{6n}} \right].
+\end{equation}
 
 \end{document}
