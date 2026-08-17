@@ -1,2 +1,4 @@
 # Calculus
-Her findes opgaver og ydereligere infomation til Calculus kursuset. Dette repo er lavet af Thomas Sejer Canham
+Dette repository samler information, materialer og beskeder, som underviseren deler i Calculus.
+
+Du er meget velkommen til at dele indholdet med dine klassekammerater på andre hold.

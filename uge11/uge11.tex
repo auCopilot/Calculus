@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage{xcolor}
+\definecolor{darkgreen}{rgb}{0.0, 0.5, 0.0}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{subcaption} % Use subcaption instead of subfigure
+\usepackage{matlab-prettifier}
+\usepackage{amsmath}
+
+% Set equation numbering to section and subsection
+%\renewcommand{\theequation}{\thesubsection.\arabic{equation}}
+\makeatletter
+\@addtoreset{equation}{subsection}
+\makeatother
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{blindtext}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{dirtytalk}
+\usepackage{enumitem}
+\usepackage{derivative}
+\usepackage{biblatex}
+
+\usepackage{svg}  % Enables SVG support
+\usepackage{hyperref} % Enables hyperlinks
+% No red boxes at hyperlinks
+\hypersetup{
+    colorlinks,
+    linkcolor={blue},
+    citecolor={blue},
+    urlcolor={blue}
+}
+
+\lstset{
+    language=Python,             % The language of the code
+    basicstyle=\ttfamily\small,  % The font style for the code
+    keywordstyle=\color{blue},   % Color of Python keywords
+    stringstyle=\color{darkgreen},     % Color of strings
+    commentstyle=\color{gray},  % Color of comments
+    showstringspaces=false,      % Do not show spaces in strings
+    frame=single,                % Frame around the code
+    numbers=left,                % Line numbers on the left
+    numberstyle=\tiny\color{gray},  % Style of the line numbers
+    breaklines=true,             % Automatic line breaking
+}%Imports biblatex package
+ \geometry{
+ a4paper,
+ total={160mm,250mm},
+ left=25mm,
+ top=30mm,
+ footskip =10mm,
+ }
+
+\title{Calculus Uge 11}
+\author{Thomas Sejer Canham}
+\date{\today} 
+\setlength\parindent{0pt}
+
+ \begin{document}
+
+\begin{titlepage}
+ \maketitle
+ \thispagestyle{empty}
+\end{titlepage}
+
+\end{document}
