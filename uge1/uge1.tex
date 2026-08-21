@@ -1,68 +1,209 @@
 \documentclass{article}
-\usepackage{xcolor}
-\definecolor{darkgreen}{rgb}{0.0, 0.5, 0.0}
-\usepackage[utf8]{inputenc}
-\usepackage{graphicx}
-\usepackage{subcaption} % Use subcaption instead of subfigure
-\usepackage{matlab-prettifier}
-\usepackage{amsmath}
 
-% Set equation numbering to section and subsection
-%\renewcommand{\theequation}{\thesubsection.\arabic{equation}}
-\makeatletter
-\@addtoreset{equation}{subsection}
-\makeatother
-\usepackage{listings}
+% -------------------------------------------------
+% Packages
+% -------------------------------------------------
+
+\usepackage{xcolor}
+\usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{matlab-prettifier}
+\usepackage{listings}
 \usepackage{blindtext}
 \usepackage{geometry}
-\usepackage{graphicx}
 \usepackage{float}
 \usepackage{dirtytalk}
 \usepackage{enumitem}
 \usepackage{derivative}
 \usepackage{biblatex}
+\usepackage{svg}
+\usepackage{hyperref}
 
-\usepackage{svg}  % Enables SVG support
-\usepackage{hyperref} % Enables hyperlinks
-% No red boxes at hyperlinks
+% -------------------------------------------------
+% Colors
+% -------------------------------------------------
+
+\definecolor{darkgreen}{rgb}{0.0, 0.5, 0.0}
+
+% -------------------------------------------------
+% Hyperlinks
+% -------------------------------------------------
+
 \hypersetup{
-    colorlinks,
-    linkcolor={blue},
-    citecolor={blue},
-    urlcolor={blue}
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
 }
 
+% -------------------------------------------------
+% Theorem environments
+% -------------------------------------------------
+
+% Numbered
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+% Unnumbered
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{proposition*}{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% -------------------------------------------------
+% Equation numbering
+% -------------------------------------------------
+
+% Reset equation numbering at each subsection
+\makeatletter
+\@addtoreset{equation}{subsection}
+\makeatother
+
+% If you want equations to be numbered by subsection,
+% uncomment the following line:
+% \renewcommand{\theequation}{\thesubsection.\arabic{equation}}
+
+% -------------------------------------------------
+% Python / MATLAB code formatting
+% -------------------------------------------------
+
 \lstset{
-    language=Python,             % The language of the code
-    basicstyle=\ttfamily\small,  % The font style for the code
-    keywordstyle=\color{blue},   % Color of Python keywords
-    stringstyle=\color{darkgreen},     % Color of strings
-    commentstyle=\color{gray},  % Color of comments
-    showstringspaces=false,      % Do not show spaces in strings
-    frame=single,                % Frame around the code
-    numbers=left,                % Line numbers on the left
-    numberstyle=\tiny\color{gray},  % Style of the line numbers
-    breaklines=true,             % Automatic line breaking
-}%Imports biblatex package
- \geometry{
- a4paper,
- total={160mm,250mm},
- left=25mm,
- top=30mm,
- footskip =10mm,
- }
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    stringstyle=\color{darkgreen},
+    commentstyle=\color{gray},
+    showstringspaces=false,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    breaklines=true
+}
+
+% -------------------------------------------------
+% Page geometry
+% -------------------------------------------------
+
+\geometry{
+    a4paper,
+    total={160mm,250mm},
+    left=25mm,
+    top=30mm,
+    footskip=10mm
+}
+
+% -------------------------------------------------
+% Document settings
+% -------------------------------------------------
+
+\setlength{\parindent}{0pt}
+
+% -------------------------------------------------
+% Title
+% -------------------------------------------------
 
 \title{Calculus Uge 1}
 \author{Thomas Sejer Canham}
-\date{\today} 
-\setlength\parindent{0pt}
+\date{\today}
 
- \begin{document}
+% =================================================
+% Document
+% =================================================
+
+\begin{document}
+
+% -------------------------------------------------
+% Title page
+% -------------------------------------------------
 
 \begin{titlepage}
- \maketitle
- \thispagestyle{empty}
+
+    \maketitle
+    \thispagestyle{empty}
+
 \end{titlepage}
+Vi skal i denne uge kigge på de gængse regneregler for differentiation, og vi skal se på hvordan man kan bruge dem til. Ydermere skal vi berøre extreme value theorem. 
+\section*{Gængse begreber fra uge 1}
+Det vil allerede nu være nyttig at bemærke at "prime" notationen er kort notation for differential operatoren
+ $$\frac{d}{dx}.$$ For eksempel er $f'(x) = \frac{df}{dx}$, og $f''(x) = \frac{d^2f}{dx^2}$ Dette vil vise sig nyttigt senere i kurset. Det hyppigst brugte regneregler for differentiation er:
+
+\begin{itemize}
+    \item Kædereglen: $f(g(x))' = f'(g(x))  g'(x)$, eller $(f \circ g)' = f'(g(x))  g'(x)$
+    
+    \item Produktreglen: $(f(x)  g(x))' = f'(x)  g(x) + f(x)  g'(x)$
+
+    \item Kvotientreglen: $\left(\dfrac{f(x)}{g(x)}\right)' = \dfrac{f'(x)  g(x) - f(x)  g'(x)}{(g(x))^2}$
+\end{itemize}
+Derudover er det nyttigt at bemærke at differentiation er en lineær operator, hvilket betyder at
+$$\frac{d}{dx}(f(x) + g(x)) = f'(x) + g'(x)$$
+og at for en constant $c \in \mathbb{R}$
+$$\frac{d}{dx}(c f(x)) = c  f'(x)$$
+Sammensat giver dette os at
+$$\frac{d}{dx}c( f(x) + g(x)) = c  f'(x) + c g'(x)$$
+
+
+\section*{Den afledte test}
+Lad $c$ være et tal i intervallet $ I = (a,b)$, og lad $f$ være en funktion der er differentiabel på $(a,b)$. Hvis $f'(x) > 0$ for alle $x \in (a,c)$, og $f'(x) < 0$ for alle $x \in (c,b)$, så har $f$ et lokalt maksimum i $c$. \vspace{1em}
+
+ Hvis $f'(x) < 0$ for alle $x \in (a,c)$, og $f'(x) > 0$ for alle $x \in (c,b)$, så har $f$ et lokalt minimum i $c$.
+
+\section*{Opgave 5.2 54}
+Vi bliver givet en funktion $D(x) = -x^4 +8x^3 + 80x^2$ der beskriver  ændring i folks holdninger som en funktion af $x$, hvor $x$ er diskrepansen mellem lytter og taler. Vi vil gerne finde den værdi af $x$ der maksimerer $D(x)$.
+
+Vi finder først den afledte funktion $D'(x)$:
+\begin{align*}
+D'(x) &= \frac{d}{dx}(-x^4 + 8x^3 + 80x^2) \\
+&= -4x^3 + 24x^2 + 160x
+\end{align*}
+For at finde kritiske punkter, sætter vi $D'(x) = 0$:
+\begin{align*}
+-4x^3 + 24x^2 + 160x &= 0 \\
+-4x(x^2 - 6x - 40) &= 0
+\end{align*}
+Dette giver os to løsninger: $x = 0$ og løsningerne til kvadratet $x^2 - 6x - 40 = 0$. Vi kan bruge kvadratsætningen $x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$ til at finde de resterende løsninger:
+\begin{align*}
+x &= \frac{6 \pm \sqrt{(-6)^2 - 4(1)(-40)}}{2(1)} \\
+&= \frac{6 \pm \sqrt{36 + 160}}{2} \\
+&= \frac{6 \pm \sqrt{196}}{2} \\
+&= \frac{6 \pm 14}{2} = -4 \vee  10
+\end{align*}
+Vi har nu tre kritiske punkter: $x = -4$, $x = 0$, og $x = 10$. For at bestemme hvilke af disse punkter der giver et lokalt maksimum, kan vi bruge den afledte test. Vi undersøger fortegnet af $D'(x)$ omkring de kritiske punkter.
+For $x < -4$, vælger vi $x = -5$:
+\begin{align*}
+D'(-5) &= -4(-5)^3 + 24(-5)^2 + 160(-5) > 0
+\end{align*}
+For $-4 < x < 0$, vælger vi $x = -1$:
+\begin{align*}
+D'(-1) &= -4(-1)^3 + 24(-1)^2 + 160(-1) < 0
+\end{align*}
+Og finder at $x=-4$ er et lokalt maksimum. \vspace{1em}
+
+For $0 < x < 10$, vælger vi $x = 1$:
+\begin{align*}
+D'(1) &= -4(1)^3 + 24(1)^2 + 160(1) > 0
+\end{align*}
+Dermed er $x=0$ et lokalt minimum. \vspace{1em}
+For $x > 10$, vælger vi $x = 11$:
+\begin{align*}
+D'(11) &= -4(11)^3 + 24(11)^2 + 160(11) < 0
+\end{align*}
+Og finder at $x=10$ er et lokalt maksimum. \vspace{1em}
+
+Vi kan så indsætte de kritiske punkter i $D(x)$ for at finde de tilhørende værdier:
+\begin{align*}
+D(-4) &= -(-4)^4 + 8(-4)^3 + 80(-4)^2 = 256 - 512 + 1280 = 1024 \\
+D(0) &= -(0)^4 + 8(0)^3 + 80(0)^2 = 0 \\
+D(10) &= -(10)^4 + 8(10)^3 + 80(10)^2 = -10000 + 8000 + 8000 = 5000
+\end{align*}
 
 \end{document}

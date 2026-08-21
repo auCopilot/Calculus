@@ -1,68 +1,154 @@
 \documentclass{article}
-\usepackage{xcolor}
-\definecolor{darkgreen}{rgb}{0.0, 0.5, 0.0}
-\usepackage[utf8]{inputenc}
-\usepackage{graphicx}
-\usepackage{subcaption} % Use subcaption instead of subfigure
-\usepackage{matlab-prettifier}
-\usepackage{amsmath}
 
-% Set equation numbering to section and subsection
-%\renewcommand{\theequation}{\thesubsection.\arabic{equation}}
-\makeatletter
-\@addtoreset{equation}{subsection}
-\makeatother
-\usepackage{listings}
+% -------------------------------------------------
+% Packages
+% -------------------------------------------------
+
+\usepackage{xcolor}
+\usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{matlab-prettifier}
+\usepackage{listings}
 \usepackage{blindtext}
 \usepackage{geometry}
-\usepackage{graphicx}
 \usepackage{float}
 \usepackage{dirtytalk}
 \usepackage{enumitem}
 \usepackage{derivative}
 \usepackage{biblatex}
+\usepackage{svg}
+\usepackage{hyperref}
 
-\usepackage{svg}  % Enables SVG support
-\usepackage{hyperref} % Enables hyperlinks
-% No red boxes at hyperlinks
+% -------------------------------------------------
+% Colors
+% -------------------------------------------------
+
+\definecolor{darkgreen}{rgb}{0.0, 0.5, 0.0}
+
+% -------------------------------------------------
+% Hyperlinks
+% -------------------------------------------------
+
 \hypersetup{
-    colorlinks,
-    linkcolor={blue},
-    citecolor={blue},
-    urlcolor={blue}
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
 }
 
+% -------------------------------------------------
+% Theorem environments
+% -------------------------------------------------
+
+% Numbered
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+% Unnumbered
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{proposition*}{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% -------------------------------------------------
+% Equation numbering
+% -------------------------------------------------
+
+% Reset equation numbering at each subsection
+\makeatletter
+\@addtoreset{equation}{subsection}
+\makeatother
+
+% If you want equations to be numbered by subsection,
+% uncomment the following line:
+% \renewcommand{\theequation}{\thesubsection.\arabic{equation}}
+
+% -------------------------------------------------
+% Python / MATLAB code formatting
+% -------------------------------------------------
+
 \lstset{
-    language=Python,             % The language of the code
-    basicstyle=\ttfamily\small,  % The font style for the code
-    keywordstyle=\color{blue},   % Color of Python keywords
-    stringstyle=\color{darkgreen},     % Color of strings
-    commentstyle=\color{gray},  % Color of comments
-    showstringspaces=false,      % Do not show spaces in strings
-    frame=single,                % Frame around the code
-    numbers=left,                % Line numbers on the left
-    numberstyle=\tiny\color{gray},  % Style of the line numbers
-    breaklines=true,             % Automatic line breaking
-}%Imports biblatex package
- \geometry{
- a4paper,
- total={160mm,250mm},
- left=25mm,
- top=30mm,
- footskip =10mm,
- }
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    stringstyle=\color{darkgreen},
+    commentstyle=\color{gray},
+    showstringspaces=false,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    breaklines=true
+}
+
+% -------------------------------------------------
+% Page geometry
+% -------------------------------------------------
+
+\geometry{
+    a4paper,
+    total={160mm,250mm},
+    left=25mm,
+    top=30mm,
+    footskip=10mm
+}
+
+% -------------------------------------------------
+% Document settings
+% -------------------------------------------------
+
+\setlength{\parindent}{0pt}
+
+% -------------------------------------------------
+% Title
+% -------------------------------------------------
 
 \title{Calculus Uge 2}
 \author{Thomas Sejer Canham}
-\date{\today} 
-\setlength\parindent{0pt}
+\date{\today}
 
- \begin{document}
+% =================================================
+% Document
+% =================================================
+
+\begin{document}
+
+% -------------------------------------------------
+% Title page
+% -------------------------------------------------
 
 \begin{titlepage}
- \maketitle
- \thispagestyle{empty}
+
+    \maketitle
+    \thispagestyle{empty}
+
 \end{titlepage}
+
+
+\section*{Extreme Value Theorem (EVT)}
+
+Jeg vil nu definerer Extreme Value Theorem og beskrive det nærmere.
+
+\begin{theorem*}[Extreme Value Theorem]
+    Lad $[a,b]$ være et lukket interval, og lad
+    $f:[a,b]\to\mathbb{R}$ være en kontinuert funktion.
+    Da antager $f$ både et maksimum og et minimum på intervallet.
+\end{theorem*}
+Hvis vi er lidt mere restriktive og lader $f$ være differentiabel på intervallet, så ved vi at maksimalværdien of minimal værdien må findes i:
+\begin{enumerate}
+    \item De kritiske punkter, dvs. $x$ hvor $f'(x) = 0$
+    \item Intervalendepunkterne, dvs. $f(a)$ eller $f(b)$
+\end{enumerate}
+(Denne udvidelse kaldes Fermats Theorem on Stationary Points)
+
 
 \end{document}
