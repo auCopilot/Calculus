@@ -131,8 +131,6 @@
     \maketitle
 
 
-\end{titlepage}
-
 I denne uge skal vi arbejde med integration ved substitution, delvis integration og vi vil kigge på hvordan i sammenspil med den fundamentale sætning for calculus kan bruges til at beregne arealer under kurver. Bemærk, at integraler er generelt svære at beregne, så dette er nogle af de mest anvendte analytiske metoder, der kan hjælpe os med at finde løsninger.
 \section*{Integration ved substitution}
 Integration ved substitution vil typisk blive brugt, når vi har en funktion, der er sammensat af to funktioner. For eksempel, hvis vi har en funktion $f(g(x))$, hvor $g(x)$ er en indre funktion og $f$ er en ydre funktion, kan vi bruge substitution til at forenkle integralet. Den bagvedliggende ide er at koordinattrasformationen $u = g(x)$, frembringer en gunstig form på integralet, hvor $\dfrac{dg}{dx}$ (Jacobian) kan bruges til at erstatte $dx$ i integralet. Dette kan gøre integralet lettere at evaluere.
@@ -146,6 +144,7 @@ Vi bruger substitution: $g(x) = u = x^2$, derved bliver $\dfrac{du}{dx} = 2x$, s
 \begin{equation}
     \int \cos(u) du = \sin(u) + C = \sin(x^2) + C
 \end{equation}
+
 \section*{Fundamentale sætning for calculus}
 Den fundamentale sætning for calculus siger, at hvis $f$ er en kontinuert funktion på intervallet $[a, b]$, og vi beregner
 \begin{equation}
@@ -156,6 +155,11 @@ så er $F'(x) = f(x)$ for alle $x$ i intervallet $[a, b]$. Dette definerer en st
     \int_a^b f(x) dx = F(b) - F(a)
 \end{equation}
 Dette giver os en metode til at beregne bestemte integraler ved at finde stamfunktioner. 
+
+
+\end{titlepage}
+
+
 
 \section*{Delvis integration}
 Delvis integration en en metode der er motiveret af produktreglen for differentiation. Hvis vi har to funktioner $f(x)$ og $g(x)$, og lader $h(x) = f(x)g(x)$, så gælder det at
