@@ -1,6 +1,6 @@
 # LaTeX build directories
 **/build/
-
+/Feedback
 # LaTeX auxiliary files
 *.aux
 *.log
