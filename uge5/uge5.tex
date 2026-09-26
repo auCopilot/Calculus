@@ -64,5 +64,77 @@
  \maketitle
  \thispagestyle{empty}
 \end{titlepage}
+\section*{Indledning}
+I denne uge skal vi arbejde med indledende sandsynlighedsteori, samt bestemmelse af middelværdi og varians for stokastiske variable. For at forstå hvad det det vil sige at noget har en sandsynlighed, skal vi først forstå hvad en begivenhed er, samt et udfaldsrum. Et udfaldsrum er en samling af alle mulige udfald, som kan ske i et givent eksperiment. \vspace{1em}
 
+For eksempel, hvis vi kaster en terning, vil udfaldsrummet være $ \Omega= \{1, 2, 3, 4, 5, 6\}$. En begivenhed er en delmængde af udfaldsrummet. For eksempel, begivenheden "at kaste et lige tal", betegnet $A$, vil være $ A = \{2, 4, 6\}$. Andre eksempler er syg eller rask, hvor udfaldsrummet er $ \Omega = \{syg, rask\}$, og begivenheden "at være syg" vil være $ A = \{syg\}$. \vspace{1em}
+
+En begivenhed knytter sig til et udfaldsrum med en eller anden sandsynlighed, helt generelt betegnet $P(A) \in [0, 1]$, hvor $A \in \Omega$.
+
+\section*{Vigtige sætninger og begreber}
+
+\subsection*{Komplmentær begivheden}
+Hvis vi har en begivenhed $A$, er den komplementære begivenhed $A^c$ defineret som alle udfald i udfaldsrummet $\Omega$, som ikke er i $A$. Det vil sige, at $A^c = \Omega \setminus A$. Et nyttigt resultat er, at sandsynligheden for den komplementære begivenhed kan udtrykkes som:
+\begin{equation}
+P(A^c) = 1 - P(A)
+\end{equation}
+Et eksempel kunne være $A=6$, for en terning, her er komplementet $A^c = \{1, 2, 3, 4, 5\}$, og vi har $P(A) = \frac{1}{6}$ og $P(A^c) = \frac{5}{6}$. \vspace{1em}
+
+\subsection*{Betinget sandsynlighed}
+Betinget sandsynlighed er sandsynligheden for en begivenhed $A$, givet at en anden begivenhed $B$ har fundet sted. Den betegnes $P(A|B)$ og defineres som:
+\begin{equation}
+P(A|B) = \frac{P(A \cap B)}{P(B)}
+\end{equation}
+hvor $P(B) > 0$. Det betyder, at vi regner med, at $B$ er opfyldt, og vi ønsker at finde sandsynligheden for $A$ i denne kontekst.
+
+\subsection*{Lov om total sandsynlighed}
+Hvis vi har et udfaldsrum $\Omega$ og en begivenhed $A$, kan vi opdele $\Omega$ i disjunkte delmængder $B_1, B_2, \ldots, B_n$, således at $\Omega = B_1 \cup B_2 \cup \ldots \cup B_n$. Så gælder loven om total sandsynlighed:
+\begin{equation}
+P(A) = \sum_{i=1}^{n} P(A \cap B_i) = \sum_{i=1}^{n} P(A|B_i)P(B_i)
+\end{equation}
+Særligt hvis et udfaldsrum $\Omega$ kan opdeles i to disjunkte delmængder $B$ og $B^c$, gælder:
+\begin{equation}
+P(A) = P(A|B)P(B) + P(A|B^c)P(B^c)
+\end{equation}
+Hvor $B^c$ er komplementet til $B$, altså alle udfald i $\Omega$ som ikke er i $B$. Bemærk at en disjunkt delmængde betyder, at det ikke er overlappende udfald i de to delmængder. Hvis vi kigger på en terning, er begivhederne $B_1 = \{1,2\}$ og $B_1 = \{3,4,5,6\}$ disjunkte delmængder af udfaldsrummet $\Omega = \{1,2,3,4,5,6\}$. Ydermere udgør de en partitionering af $\Omega$. \vspace{1em}
+
+
+
+\subsection*{Bayes' sætning}
+Bayes' sætning er vigtig når vi øsnker at finde en betinget sandsynlighed, givet en anden betinget sandsynlighed.
+For to begivenheder $A$ og $B$, hvor $P(B) > 0$, gælder Bayes' sætning.
+\begin{equation}
+P(A|B) = \frac{P(B|A)P(A)}{P(B)}
+\end{equation}
+Hvis vi endvidere har en partitionering af udfaldsrummet $\Omega$ i disjunkte begivenheder $B_1, B_2, \ldots, B_n$, kan vi udtrykke Bayes' sætning som:
+\begin{equation}
+P(B_i|A) = \frac{P(A|B_i)P(B_i)}{\sum_{j=1}^{n} P(A|B_j)P(B_j)}
+\end{equation}
+Specielt hvis vi har to disjunkte begivenheder $B$ og $B^c$, gælder:
+\begin{equation}
+P(B|A) = \frac{P(A|B)P(B)}{P(A|B)P(B) + P(A|B^c)P(B^c)}
+\end{equation}
+
+\subsection*{Middelværdi (Forventet Værdi) og Varians}
+Den forventede værdi (middelværdi) af en stokastisk variabel $X$ er et mål for dens centrale tendens. For en diskret stokastisk variabel skal vi summere over alle mulige udfald, vægtet med deres sandsynligheder:
+\begin{equation}
+E[X] = \sum_{x \in X} x_i P(X = x_i)
+\end{equation}
+Variansen af en stokastisk variabel $X$ måler spredningen af dens udfald omkring middelværdien. Den defineres som:
+\begin{equation}
+Var(X) = E[(X - E[X])^2] = E[X^2] - (E[X])^2
+\end{equation}
+For en kontinuert stokastisk variabel, erstattes summen med et integral:
+\begin{equation}
+E[X] = \int_{-\infty}^{\infty} x f_X(x) dx
+\end{equation}
+Til tider kan det være nyttigt at bruge LOTUS (Law of the Unconscious Statistician) til at finde forventet værdi af en funktion $g(X)$ af en stokastisk variabel $X$:
+\begin{equation}
+E[g(X)] = \sum_{x \in X} g(x_i) P(X = x_i) \quad \text{(diskret)}
+\end{equation}
+
+\section*{Hint til ugens aflevering}
+Det udfordrende i ugen aflevering er at forstå hvordan man oversætter informationen i teksten til sandsynligheder. Det vil værre nyttig at definere sine begivheder med meningfulde navne, såsom. Altså er udfaldsrummet for testresultatet $T = \{Negativ, Positiv\}$, og begivenhederne for kræft diagnosen $K = \{Syg, Rask\}$. Dette gør det mere overskueligt at holde styr på de forskellige (betingede) sandsynligheder, og det gør det lettere at anvende Bayes' sætning. \vspace{1em}
+
+Hvis i studser over at i finder en meget lav sandsynlighed for at have kræft, givet et positivt testresultat, så er det fordi at sandsynligheden for at have kræft i befolkningen er meget lav. Det betyder at selvom testen er ret præcis, vil der stadig være mange falske positiver. \vspace{1em}
 \end{document}
