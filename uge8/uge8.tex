@@ -65,4 +65,182 @@
  \thispagestyle{empty}
 \end{titlepage}
 
+I denne uge skal vi kigge på de indledende begreber indenfor linær algebra. 
+Vi skal arbejde med reduceret række echelon form RREF, og vi skal bruge Gauss-Jordan elimination til at finde løsningen(erne) til et givet lineært ligningssystem. Disse metoder bruger elementære rækkeoperationer til at manipulere matricer. Vi kan forstå elementære rækkeoperationer som en manipulation der ikke ændrer informationen i et lineært ligningsystem - det vil altså sige, at så længe vi bruger elementære rækkeoperationer, så vil løsningen til det lineære ligningsystem ikke ændre sig. Disse elementære rækkeoperationer er:
+\begin{enumerate}
+    \item Gange en skalar $k \in \mathbb{R} \setminus 0$ på en række, dvs. vi må gange et reelt tal der ikke er nul. Bemærk at dette også dækker division da vi blot kan indføre $c = \dfrac{1}{k} \in  \mathbb{R} \setminus 0$
+    \item Bytte to rækker, dvs. vi må bytte om på rækkefølgen af to rækker.
+    \item Lægge en række til en anden række.
+\end{enumerate}
+Vi vil anvende overstående til at løse opgave 10.1.38 nedenfor.
+
+\section*{Opgave 10.1.38}
+Ud fra ligningsystemet 
+
+\begin{equation}
+\begin{cases}
+x + 3y - 2z - w = 9 \\
+2x + 4y + 2w = 10 \\
+-3x - 5y + 2z - w = -15 \\
+x - y - 3z + 2w = 6
+\end{cases}
+\end{equation}
+kan vi danna følgende augmenterede matrice, hvor koefficienterne for de ukendte er i venstre side af stregen, og konstanterne er i højre side af stregen.
+\begin{equation}
+\left[
+\begin{array}{rrrr|r}
+1 & 3 & -2 & -1 & 9 \\
+2 & 4 & 0 & 2 & 10 \\
+-3 & -5 & 2 & -1 & -15 \\
+1 & -1 & -3 & 2 & 6
+\end{array}
+\right]
+\end{equation}
+
+Vi trækker første række fra den sidste række.
+
+\begin{equation}
+\left[
+\begin{array}{rrrr|r}
+1 & 3 & -2 & -1 & 9 \\
+2 & 4 & 0 & 2 & 10 \\
+-3 & -5 & 2 & -1 & -15 \\
+0 & -4 & -1 & 3 & -3
+\end{array}
+\right]
+\end{equation}
+
+Så trækker vi 2 gange første række fra anden række.
+
+\begin{equation}
+\left[
+\begin{array}{rrrr|r}
+1 & 3 & -2 & -1 & 9 \\
+0 & -2 & 4 & 4 & -8 \\
+-3 & -5 & 2 & -1 & -15 \\
+0 & -4 & -1 & 3 & -3
+\end{array}
+\right]
+\end{equation}
+
+Og så lægger vi 3 gange første række til tredje række.
+
+\begin{equation}
+\left[
+\begin{array}{rrrr|r}
+1 & 3 & -2 & -1 & 9 \\
+0 & -2 & 4 & 4 & -8 \\
+0 & 4 & -4 & -4 & 12 \\
+0 & -4 & -1 & 3 & -3
+\end{array}
+\right]
+\end{equation}
+
+Vi har nu dannet den første kolonne i en echelonform. 
+Jeg lægger 2 gange anden række til tredje række.
+
+\begin{equation}
+\left[
+\begin{array}{rrrr|r}
+1 & 3 & -2 & -1 & 9 \\
+0 & -2 & 4 & 4 & -8 \\
+0 & 0 & 4 & 4 & -4 \\
+0 & -4 & -1 & 3 & -3
+\end{array}
+\right]
+\end{equation}
+
+Så trækker vi 2 gange anden række fra den sidste række.
+
+\begin{equation}
+\left[
+\begin{array}{rrrr|r}
+1 & 3 & -2 & -1 & 9 \\
+0 & -2 & 4 & 4 & -8 \\
+0 & 0 & 4 & 4 & -4 \\
+0 & 0 & -9 & -5 & 13
+\end{array}
+\right]
+\end{equation}
+
+Jeg lægger nu $\frac{9}{4}$ gange tredje række til den sidste række.
+
+\begin{equation}
+\left[
+\begin{array}{rrrr|r}
+1 & 3 & -2 & -1 & 9 \\
+0 & -2 & 4 & 4 & -8 \\
+0 & 0 & 4 & 4 & -4 \\
+0 & 0 & 0 & 4 & 4
+\end{array}
+\right]
+\label{uppertri}
+\end{equation}
+Vi har nu dannet en øvre diagonal matrix på højre side af stregen. Vi kan nu begynde at løse systemet ved at substituere baglæns, eller vi kan fortsætte reduktionen til RREF, hvoraf løsningen kan aflæses direkte. Vi vælger at fortsætte reduktionen til RREF. Alle rækkerne ganges med den reciprokke af deres første ikke-nul element, så vi får en 1'er i hver række.
+
+\begin{equation}
+\left[
+\begin{array}{rrrr|r}
+1 & 3 & -2 & -1 & 9 \\
+0 & 1 & -2 & -2 & 4 \\
+0 & 0 & 1 & 1 & -1 \\
+0 & 0 & 0 & 1 & 1
+\end{array}
+\right]
+\end{equation}
+Bemærk at vi kan bruge rækkerne der kun har 1 i den respektive kolonne til at eliminere de andre elementer i den kolonne. Vi kan nu trække den sidste række fra den tredje række, og vi får:
+\begin{equation}
+\left[
+\begin{array}{rrrr|r}
+1 & 3 & -2 & -1 & 9 \\
+0 & 1 & -2 & -2 & 4 \\
+0 & 0 & 1 & 0 & -2 \\
+0 & 0 & 0 & 1 & 1
+\end{array}
+\right]
+\end{equation}
+Nu bruger vi den sidste og den tredje række til at eliminere de respektive elementer i anden række. Vi lægger to gange den sidste række til anden række, og to gange den tredje række til anden række, og vi får:
+\begin{equation}
+\left[
+\begin{array}{rrrr|r}
+1 & 3 & -2 & -1 & 9 \\
+0 & 1 & 0 & 0 & 2 \\
+0 & 0 & 1 & 0 & -2 \\
+0 & 0 & 0 & 1 & 1
+\end{array}
+\right]
+\end{equation}
+Vi lægger nu den sidste række til den første række, og to gange den tredje række til den første række, og tre gange den anden række til den første række, og vi får:
+\begin{equation}
+\left[
+\begin{array}{rrrr|r}
+1 & 0 & 0 & 0 & 9 - 6 - 4 + 1 = 0 \\
+0 & 1 & 0 & 0 & 2 \\
+0 & 0 & 1 & 0 & -2 \\
+0 & 0 & 0 & 1 & 1
+\end{array}
+\right]
+\end{equation}
+detto giver os løsningen til systemet:
+\begin{equation}
+\begin{cases}
+x = 0 \\
+y = 2 \\
+z = -2 \\
+w = 1
+\end{cases}
+\end{equation}
+Hvis vi i stedet havde valgt at substituere baglæns fra den øvre diagonal matrix i \eqref{uppertri}, vill vi få følgende ligningsystem hvor biimplikationerne kan dannes fra bunden op:
+\begin{equation}
+\begin{cases}
+4w = 4  \iff w = 1 \text{ Løs sidste række, brug løsning i tr ligning}\\ 
+4z + 4w =4z + 4 = -4 \iff z = -2 \text{ Løs tredje række, brug i næste ligning, osv...}\\
+-2y + 4z + 4w = -2y - 8 + 4 = -8 \iff y = 2\\
+x + 3y - 2z - w = x + 6 + 4 - 1 = 9 \iff x = 0
+\end{cases}
+\end{equation}
+Hvis is nu tænker, "Hold kæft, det er da meget arbejde for at løse et simpelt system", så har du ret. Der findes meget smartere måder at løse disse systemer på - en populær metode er at bruge $QR$-faktorisering, da det kan vises at alle  kvadratiske matricer $A$ kan skrives $A = QR$, hvor $Q$ er enortogonal matrix og $R$ er en øvre diagonal matrix. Da vil man danne 
+$$ Ax = QRx = b \implies Rx = Q^Tb$$
+og så kan man substituere baglæns som vi gjorde ovenfor. Her er den eneste udfording at betemme $Q$, som så bruges til at bestemme $R$. $Q$ findes ved en process kaldet Householder transformationer. Dette er blot til orientering \url{https://en.wikipedia.org/wiki/QR_decomposition} :-)
+
 \end{document}
